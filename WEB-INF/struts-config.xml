@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+    <!-- ==================================== Data Source Configuration -->
+    <!--
+    <data-sources>
+
+    <data-source>
+    <set-property
+    property="autoCommit"
+    value="false"/>
+    <set-property
+    property="description"
+    value="Example Data Source Configuration"/>
+    <set-property
+    property="driverClass"
+    value="org.postgresql.Driver"/>
+    <set-property
+    property="maxCount"
+    value="4"/>
+    <set-property
+    property="minCount"
+    value="2"/>
+    <set-property
+    property="password"
+    value="mypassword"/>
+    <set-property
+    property="url"
+    value="jdbc:postgresql://localhost/mydatabase"/>
+    <set-property
+    property="user"
+    value="myusername"/>
+    </data-source>
+
+    </data-sources>
+
+    -->
+
+    <!-- ================================= Global Exception Definitions -->
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+        key="expired.password"
+        type="app.ExpiredPasswordException"
+        path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+
+    <!-- =================================== Global Forward Definitions -->
+
+    <global-forwards>
+        <forward name="error" path="/error.jsp"/>
+        <forward name="login" path="/login.jsp"/>
+    </global-forwards>
+
+    <!-- =================================== Action Mapping Definitions -->
+
+    <action-mappings>
+
+        <action    path="/login"
+            type="ir.ac.tums.mail.actions.LoginAction"
+            input="/login.jsp">
+            <forward name="admin"              path="/adminhome.jsp"/>
+            <forward name="headadmin"              path="/headadminhome.jsp"/>
+            <forward name="user"              path="/userhome.do"/>
+        </action>
+
+        <action    path="/logout"
+            type="ir.ac.tums.mail.actions.LogoutAction">
+            <forward name="success"              path="/login.jsp"/>
+        </action>
+
+        <action    path="/adminhome"
+            type="ir.ac.tums.mail.actions.AdminHomeAction">
+            <forward name="success"              path="/adminhome.jsp"/>
+        </action>
+
+        <action    path="/userhome"
+            type="ir.ac.tums.mail.actions.UserHomeAction">
+            <forward name="success"              path="/userhome.jsp"/>
+        </action>
+
+        <action    path="/adduserform"
+            type="ir.ac.tums.mail.actions.AddUserFormAction">
+            <forward name="success"              path="/adduserform.jsp"/>
+        </action>
+
+        <action    path="/adduser"
+            type="ir.ac.tums.mail.actions.AddUserAction"
+            input="/adduserform.do">
+            <forward name="success"              path="/confirmadduser.jsp"/>
+        </action>
+
+        <action    path="/updateremoveuserlist"
+            type="ir.ac.tums.mail.actions.UpdateRemoveUserListAction">
+            <forward name="success"              path="/updateremoveuserlist.jsp"/>
+        </action>
+
+        <action    path="/removeuser"
+            type="ir.ac.tums.mail.actions.RemoveUserAction">
+            <forward name="success"              path="/updateremoveuserlist.do"/>
+        </action>
+
+        <action    path="/updateuserform"
+            type="ir.ac.tums.mail.actions.UpdateUserFormAction">
+            <forward name="success"              path="/updateuserform.jsp"/>
+        </action>
+
+        <action    path="/updateuser"
+            type="ir.ac.tums.mail.actions.UpdateUserAction"
+            input="/adduserform.do">
+            <forward name="success"              path="/confirmupdateuser.jsp"/>
+        </action>
+
+        <action    path="/reports"
+            type="ir.ac.tums.mail.actions.ReportsAction">
+            <forward name="success"              path="/reports.jsp"/>
+        </action>
+
+        <action    path="/searchresults"
+            type="ir.ac.tums.mail.actions.SearchResultsAction">
+            <forward name="success"              path="/searchresults.jsp"/>
+        </action>
+
+        <action    path="/addhostform"
+            type="ir.ac.tums.mail.actions.AddHostFormAction">
+            <forward name="success"              path="/addhostform.jsp"/>
+        </action>
+
+        <action    path="/addhost"
+            type="ir.ac.tums.mail.actions.AddHostAction"
+            input="/addhostform.do">
+            <forward name="success"              path="/confirmaddhost.jsp"/>
+        </action>
+
+        <action    path="/addunitform"
+            type="ir.ac.tums.mail.actions.AddUnitFormAction">
+            <forward name="success"              path="/addunitform.jsp"/>
+        </action>
+
+        <action    path="/addunit"
+            type="ir.ac.tums.mail.actions.AddUnitAction"
+            input="/addunitform.do">
+            <forward name="success"              path="/confirmaddunit.jsp"/>
+        </action>
+
+        <action    path="/addspecialityform"
+            type="ir.ac.tums.mail.actions.AddSpecialityFormAction">
+            <forward name="success"              path="/addspecialityform.jsp"/>
+        </action>
+
+        <action    path="/addspeciality"
+            type="ir.ac.tums.mail.actions.AddSpecialityAction"
+            input="/addspecialityform.do">
+            <forward name="success"              path="/confirmaddspeciality.jsp"/>
+        </action>
+
+        <action    path="/changepasswordform"
+            type="ir.ac.tums.mail.actions.ChangePasswordFormAction">
+            <forward name="success"              path="/changepasswordform.jsp"/>
+        </action>
+
+        <action    path="/changepassword"
+            type="ir.ac.tums.mail.actions.ChangePasswordAction"
+            input="/changepasswordform.do">
+            <forward name="success"              path="/conformchangepassword.jsp"/>
+        </action>
+
+        <action    path="/removehost"
+            type="ir.ac.tums.mail.actions.RemoveHostAction">
+            <forward name="success"              path="/addhostform.do"/>
+        </action>
+
+        <action    path="/removespeciality"
+            type="ir.ac.tums.mail.actions.RemoveSpecialityAction">
+            <forward name="success"              path="/addspecialityform.do"/>
+        </action>
+
+        <action    path="/removeunit"
+            type="ir.ac.tums.mail.actions.RemoveUnitAction">
+            <forward name="success"              path="/addunitform.do"/>
+        </action>
+
+    </action-mappings>
+
+    <!-- ===================================== Controller Configuration -->
+
+    <controller
+        processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <!-- ================================ Message Resources Definitions -->
+
+    <message-resources parameter="resources.application"/>
+
+    <!-- ======================================= Plug Ins Configuration -->
+
+
+    <!-- ========== Tiles plugin ===================  -->
+    <!--												-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from web.xml, then
+    overload them with parameters defined here. All parameters are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true (default),
+    there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this later case,
+    it is still needed to declare one plugin per module. The factory will be
+    initialized with parameters found in the first initialized plugin (generally the
+    one associated with the default module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header. (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+  -->
+    <!-- comment following if struts1.0.x -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config"
+            value="/WEB-INF/tiles-defs.xml" />
+        <set-property property="moduleAware" value="true" />
+        <set-property property="definitions-parser-validate" value="true" />
+    </plug-in>
+
+    <!-- end comment if struts1.0.x -->
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+
+</struts-config>
+
